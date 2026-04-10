@@ -1,0 +1,149 @@
+Temporal Heuristic Training Framework
+— A Large-Model Training Paradigm Based on Temporal Segmentation, Active Inference, and Reflective Correction
+Core Idea
+
+This framework proposes transforming large-model training from a process of one-time data ingestion into a recursive structure of temporally segmented learning: first inference, then correction.
+
+By leveraging the chronological order of human knowledge, the model is repeatedly placed at the boundary of a given historical stage. It is first trained only on materials up to that point, then confronted with questions whose answers do exist historically but lie beyond its current knowledge slice. The model must infer from what it already knows, generate hypotheses, attempt forms of verification, and later revise itself when the next historical slice is revealed.
+
+The point is not merely to let the model see correct answers, but to let it repeatedly undergo the full process of moving from the known toward the unknown, making mistakes, testing its assumptions, and correcting itself during training. What is trained in this way is not only knowledge fitting, but the ability to extend beyond a knowledge boundary.
+
+Framework Structure
+Step One: Foundation Training
+
+A historical point in time is selected as the initial boundary. The model is trained only on materials from that year and earlier, forming a constrained but internally coherent knowledge base.
+
+The purpose is not to maximize how much the model knows, but to place it within the epistemic conditions of a real historical stage.
+
+Step Two: Predictive Challenge
+
+Once the foundation phase is complete, the model is presented with a set of questions. These questions have definite historical answers, but those answers belong to a later period and are therefore unavailable within the model’s current knowledge boundary. The model must answer by inference rather than recall.
+
+These questions may be designed by human researchers or assisted by already trained models, but they are only the starting point. More importantly, in the course of attempting answers, the model will often generate new intermediate questions, branching hypotheses, and verification demands. These should themselves be treated as part of the training process rather than dismissed as noise.
+
+Step Three: Heuristic Guidance and Verification Intervention
+
+The model’s reasoning should not remain purely linguistic. Different domains require different forms of verification, and textual reasoning alone is often insufficient for the formation of stable knowledge. For this reason, the framework should provide the model with some capacity, at least in principle, to test its own inferences.
+
+This verification can take multiple forms.
+
+In earlier and lower-cost implementations, the process may rely on logical consistency checks, simulated feedback in constrained environments, or heuristic guidance from more mature models that do not provide direct answers but instead expose contradictions, gaps, or untested assumptions in the training model’s reasoning.
+
+As conditions improve, more realistic experimental, simulated, or interactive environments can gradually be introduced, allowing the model not only to generate hypotheses but to test them under controlled conditions.
+
+What matters is that auxiliary systems—whether human researchers, mature models, or simulated environments—should not replace the model’s own inferential activity. Their role is to provide constraints, feedback, and conditions of verification, not to answer on the model’s behalf.
+
+Step Four: Answer Revelation and Reflective Correction
+
+After a round of prediction and verification, the complete materials of the next historical stage are introduced. At this point, the model confronts three things:
+
+the answers that humanity historically arrived at,
+the model’s own earlier inferences,
+the feedback obtained during verification.
+
+The central training signal arises from the alignments and discrepancies among these three. The model must not only learn what the historical answer was, but reflect on why it reasoned as it did, where it went wrong, which intermediate assumptions were productive, and which verification paths had value.
+
+Step Five: Recursive Advancement
+
+A later historical stage then becomes the new starting boundary, and the process repeats. The model is again placed at the edge of what is known, and again undergoes prediction, verification, failure, and revision.
+
+Across repeated cycles, what the model practices is no longer merely domain-specific content, but the act of extending beyond a current epistemic boundary itself.
+
+Key Properties
+1. History as a Non-Arbitrary Cognitive Sandbox
+
+The chronological order of knowledge is not an artificially designed curriculum but a record of real epistemic development. The barriers, constraints, and missing methods faced in each period were historically real.
+
+This means that the boundaries encountered by the model are not arbitrary obstacles inserted by a task designer, but boundaries that once existed in actual human cognition and inquiry.
+
+2. Prediction Error as Part of the Training Signal
+
+Conventional training emphasizes fitting to already available answers. This framework instead emphasizes the gap between the model’s own inference and the answer that history eventually produced.
+
+That gap is not merely a failed output to be discarded. It becomes a meaningful source of training signal. The model learns not only what was correct, but why it was wrong and how correction should proceed.
+
+3. Verification as a Formal Part of the Inferential Loop
+
+Current language models rely overwhelmingly on text corpora and usually lack the capacity to actively test propositions. One major direction of this framework is therefore to make verification a formal part of training.
+
+In weaker forms, this may involve consistency checks, simulated experimental outcomes, or heuristic feedback. In stronger forms, it may move toward real experimentation, simulation systems, or environmental interaction. The goal is not a single implementation, but a transition from merely producing statements to generating, testing, and revising them.
+
+4. Systematic Preservation of Intermediate Knowledge
+
+During inference and verification, the model generates a large body of intermediate content absent from the original training corpus: incorrect hypothesis paths, abandoned directions, unrealized alternatives, and unexpected new ideas.
+
+Conventional training rarely preserves such material. Yet some of it may contain directions that human history itself neglected. The framework should therefore include dedicated mechanisms for recording these intermediate states in structured form rather than preserving only final answers.
+
+5. Tolerance for Open Branches Beyond Historical Answers
+
+The fact that human history settled on a particular answer does not mean it was the only logically possible path. Real knowledge development is shaped by contingency, resource limitations, social structure, and technical conditions.
+
+For this reason, when a model produces lines of reasoning that remain internally coherent and are not refuted by available verification, those lines need not be erased simply because they did not become part of the historical mainstream. A better approach is to preserve them as open hypotheses alongside the historical answer for later evaluation.
+
+6. Recursive Accumulation of Generalization Capacity
+
+Across repeated temporal cycles, the model repeatedly performs a full set of cognitive actions: posing questions, generating hypotheses, selecting ways to verify them, enduring failure, and revising itself.
+
+When the historical record is exhausted and the model begins facing truly open problems, it will already have accumulated extensive experience in this process. What it gains is therefore not only static knowledge, but a more stable capacity for extrapolation.
+
+The Fundamental Difference from Conventional Training
+
+Conventional training largely works by feeding the model large amounts of data at once and allowing it to fit correlations within a relatively static representational space. Such models may exhibit some extrapolative power, but that power is mostly a byproduct of fitting rather than the direct object of training.
+
+This framework differs by introducing time explicitly into the training structure. Knowledge is segmented along a historical axis, and active inference, verification, and correction are inserted between adjacent slices. The model is trained not merely to absorb existing answers, but to continue forming judgments beyond the edge of what it already knows.
+
+Put differently, conventional training mainly optimizes compression and fitting over available knowledge, whereas this framework attempts to train the capacity for growth outward from that knowledge.
+
+A Note for Those Who May Wish to Implement It
+
+At present, this framework remains conceptual and has not undergone systematic engineering validation. To propose it is not to claim that it is already mature or directly deployable. On the contrary, much about it still requires revision, decomposition, and reconstruction.
+
+Its value lies in trying to answer a question more fundamental than engineering: what should learning itself look like?
+
+If this direction is ever to be implemented, at least the following problems must be faced.
+
+1. Turning Inferential Processes into Computable Training Signals
+
+Whatever the model generates during prediction—whether right or wrong—cannot simply be consumed as one-off output. It must be structurally recorded and converted into signals usable for supervision, preference optimization, or other training mechanisms.
+
+In particular, erroneous paths should not simply be deleted. Often the most valuable thing is not the mistake itself, but the way the mistake was produced.
+
+2. Sequencing the Introduction of Verification Mechanisms
+
+This framework does not require expensive or fully realistic experimental environments from the outset. A more realistic path is to begin with lower-cost forms such as logical checks, simulated feedback, or heuristic assistance from mature models, and only first test whether the framework yields meaningful gains.
+
+Once the methodology becomes clearer, stronger experimental capacity, simulation systems, or environmental interaction can be added gradually. It should be admitted from the start that this framework will almost certainly impose substantial costs in time and resources relative to conventional training.
+
+3. Systematically Preserving Emergent Intermediate Knowledge
+
+Without dedicated recording mechanisms, the large amount of intermediate content generated during inference will quickly disappear, leaving only surface-level right-or-wrong outcomes. This would strip the framework of much of its value.
+
+The training pipeline therefore requires an independent storage layer for intermediate states, preserving hypothesis paths, rejected directions, unfinished branches, and unexpected findings in structured form.
+
+4. Handling Cross-Stage Knowledge Retention
+
+A temporally staged training process carries a structural risk: later knowledge may partially overwrite or weaken the representations and experience formed in earlier stages.
+
+For that reason, maintaining prior-stage stability while introducing later-stage knowledge is a central engineering problem. Otherwise, temporal progression may collapse into another form of repeated overwriting rather than cumulative development.
+
+Why This Framework Places Special Weight on Error
+
+Current training paradigms generally favor high-quality, curated, and already-correct data. But in any serious learning process, understanding what is correct cannot be fully separated from recognizing what is wrong.
+
+Human knowledge did not emerge by starting from finished answers. It emerged through long sequences of misjudgment, trial, correction, and reorganization. This framework emphasizes temporally staged failure not to introduce noise, but to make the recognition, handling, and productive use of error part of the training content itself.
+
+Finally
+
+This framework did not emerge as a natural extension of an existing engineering pipeline. It emerged from a more basic question: if learning is not simply the receipt of answers, then how should it occur?
+
+I am not an engineer, nor do I intend to carry this framework alone into a finished form. It is clearly rough, and it surely contains many weaknesses. But difficulty is not, by itself, a reason to dismiss a direction.
+
+If someone does choose to continue this work, I hope what is carried forward is not merely this document, but the question behind it: can a model be made to undergo the formation of knowledge during training, rather than merely memorize its results?
+
+Postscript: On the Broader Reach of This Framework
+
+If time is introduced directly into the training structure, then this framework need not remain limited to scientific knowledge.
+
+In domains such as aesthetics or design, there are also traceable historical trajectories. One could imagine arranging interface design, industrial design, or visual style chronologically and asking the model to infer possible future directions from earlier design languages. That may help train a historically grounded capacity for aesthetic extrapolation rather than mere collage-like imitation of existing styles.
+
+For now, this remains only an auxiliary extension rather than the main body of the proposal. But it suggests that, in principle, any domain with a historical trajectory may fall within the scope of this training idea.
